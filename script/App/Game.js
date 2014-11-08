@@ -48,6 +48,10 @@ app.game = {
 
     return player;
   },
+  
+  rewardPlayer: function(data) {
+    this.players[data.team].reward();
+  },
 
   wrap: function(entity) {
 

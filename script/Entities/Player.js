@@ -23,7 +23,11 @@ ENGINE.Player = function(args) {
     maxCooldown: 0.3,
 
     hp: 10,
-    maxHp: 10
+    maxHp: 10,
+    
+    /* score */
+    
+    score: 0
 
   }, args);
 
@@ -97,6 +101,10 @@ ENGINE.Player.prototype = {
     });
     app.playSound("shoot");
 
+  },
+  
+  reward: function() {
+    this.score += 1;
   },
 
   step: function(delta) {
