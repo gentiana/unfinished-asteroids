@@ -6,10 +6,18 @@ ENGINE.Bullet = function(args) {
     speed: 300,
     lifespan: 2
   }, args);
+  
+  this.sprite = this.sprites[this.team];
+  
+  this.width = this.sprite[2];
+  this.height = this.sprite[3];
+  this.radius = Math.min(this.width, this.height) / 2 | 0;
 
-  this.radius = 3;
+  this.scale = (this.splits + 1) / 4;
+  this.hp = this.scale * 10 | 0;
 
 };
+
 
 ENGINE.Bullet.prototype = {
 
@@ -18,6 +26,11 @@ ENGINE.Bullet.prototype = {
   zIndex: 3,
 
   collidable: true,
+
+  sprites: [
+    [20, 53, 6, 6],
+    [43, 53, 6, 6],
+  ],
 
   collision: function(entity) {
 
@@ -49,8 +62,13 @@ ENGINE.Bullet.prototype = {
   },
 
   render: function() {
+    
+    app.layer.save();
 
-    app.layer.fillStyle("#fff").fillRect(this.x - 4, this.y - 4, 8, 8);
+    app.layer.translate(this.x, this.y);
+    app.layer.drawRegion(app.images.spritesheet, this.sprite, -this.width / 2, -this.height / 2);
+
+    app.layer.restore();
 
   }
 
