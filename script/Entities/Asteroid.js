@@ -37,6 +37,7 @@ ENGINE.Asteroid.prototype = {
       if (this.splits) this.split();
       app.playSound("asteroid-crush");
       app.game.rewardPlayer(data);
+      this.spawnCoin();
 
       this.collection.remove(this);
     }
@@ -54,6 +55,14 @@ ENGINE.Asteroid.prototype = {
       });
     }
 
+  },
+  
+  spawnCoin: function() {
+    this.collection.add(ENGINE.Coin, {
+      x: this.x,
+      y: this.y,
+      direction: Math.random() * 6
+    });
   },
 
   step: function(delta) {

@@ -103,8 +103,11 @@ ENGINE.Player.prototype = {
 
   },
   
-  reward: function() {
-    this.score += 1;
+  reward: function(reward) {
+    if (reward === undefined)
+      this.score += 1;
+    else
+      this.score += reward;
   },
 
   step: function(delta) {
