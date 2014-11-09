@@ -60,8 +60,7 @@ ENGINE.Asteroid.prototype = {
   spawnCoin: function() {
     this.collection.add(ENGINE.Coin, {
       x: this.x,
-      y: this.y,
-      direction: Math.random() * 6
+      y: this.y
     });
   },
 

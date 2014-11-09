@@ -9,7 +9,7 @@ var app = playground({
 
   create: function() {
 
-    this.loadImages("spritesheet");
+    this.loadImages("spritesheet", "coins");
     this.loadSounds("shoot", "asteroid-hit", "asteroid-crush");
     
   },

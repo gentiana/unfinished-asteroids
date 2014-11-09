@@ -50,7 +50,11 @@ app.game = {
   },
   
   rewardPlayer: function(data) {
-    this.players[data.team].reward();
+    
+    var player = this.players[data.team];
+    if (player !== undefined)
+      player.reward();
+    
   },
 
   wrap: function(entity) {
